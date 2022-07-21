@@ -1,18 +1,29 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Navbar></Navbar>
+  <Banner></Banner>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Navbar from "@/components/Navbar.vue";
+import Banner from "@/components/Banner.vue";
+
+const getArticleInfo = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  return true;
+};
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld
-  }
-}
+    Navbar,
+    Banner,
+  },
+  async setup() {
+    const article = await getArticleInfo();
+    return {
+      article,
+    };
+  },
+};
 </script>
