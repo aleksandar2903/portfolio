@@ -116,7 +116,9 @@
                   alt="Github"
               /></a>
             </div>
-            <button class="resume-button"><span>Resume</span></button>
+            <button class="button-transition fw-bold">
+              <span>Resume</span>
+            </button>
           </div>
         </div>
       </div>
