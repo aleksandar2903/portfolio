@@ -104,21 +104,25 @@
           >
             <div class="social-icon justify-content-center d-flex gap-2">
               <a
-                href="https://www.linkedin.com/in/iagoaferreira/"
+                href="https://www.linkedin.com/in/aleksandar-stojanovic-bb211b224/"
                 target="_blank"
                 ><img
                   :src="require('../assets/img/navLinkedIn.svg')"
                   alt="Linkedin"
               /></a>
-              <a href="https://github.com/IagoAntunes" target="_blank"
+              <a href="https://github.com/aleksandar2903" target="_blank"
                 ><img
                   :src="require('../assets/img/navGithub.svg')"
                   alt="Github"
               /></a>
             </div>
-            <button class="button-transition fw-bold">
+            <a
+              href="https://drive.google.com/file/d/19uabLtjiWWdavqD4CoCWeL06gX3SFtyu/view?usp=sharing"
+              target="_blank"
+              class="button-transition text-center fw-bold"
+            >
               <span>Resume</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>

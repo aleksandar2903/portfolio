@@ -43,18 +43,33 @@
             </div>
           </div>
           <div class="row mt-5">
-            <div class="col-4" v-for="project in projects" :key="project.id">
+            <div
+              class="col-md-6 col-xl-4"
+              v-for="(project, index) in projects"
+              :key="index"
+            >
               <div class="proj-imgbx">
                 <img :src="require('../assets/img/' + project.images[0])" />
-                <div class="proj-txtx">
-                  <h4>{{ project.title }}</h4>
+                <div class="proj-txtx px-4">
+                  <h3>{{ project.title }}</h3>
                   <span>{{ project.tehnologies }}</span>
-                  <div class="proj-git">
-                    <a href="{linkGit}" target="_blank"
-                      ><img
-                        src="../assets/img/imgProjectFisiotherapp.png"
-                        alt="Github"
-                    /></a>
+                  <div class="row gap-4 mt-3">
+                    <div>
+                      <button
+                        @click="showGallery(index)"
+                        class="btn rounded-0 btn-outline-dark"
+                      >
+                        Show gallery
+                      </button>
+                    </div>
+                    <div v-if="project.github">
+                      <a
+                        class="btn btn-link text-black"
+                        :href="project.github"
+                        target="_blank"
+                        >Source code</a
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,72 +79,182 @@
       </div>
     </div>
   </section>
+  <Gallery v-if="show" @close="show = false" :images="images"></Gallery>
 </template>
 <script>
+import Gallery from "./Gallery.vue";
 const webProjects = [
   {
     id: 1,
     title: "Inventory Management System",
-    tehnologies: "Laravel, Vue, Bootstrap",
-    github: "",
+    tehnologies: "PHP, Laravel, Vue, Bootstrap",
+    github: "https://github.com/aleksandar2903/IMS_Laravel_Vue",
     description: "",
+    images: [
+      "ims_web1.png",
+      "ims_web2.png",
+      "ims_web3.png",
+      "ims_web4.png",
+      "ims_web5.png",
+      "ims_web6.png",
+      "ims_web7.png",
+      "ims_web9.png",
+      "ims_web10.png",
+      "ims_web11.png",
+      "ims_web12.png",
+      "ims_web13.png",
+    ],
   },
   {
     id: 2,
     title: "Movie App (TMDB API)",
-    tehnologies: "Laravel, Bootstrap",
+    tehnologies: "PHP, Laravel, Bootstrap",
     github: "",
     description: "",
+    images: [
+      "movieapp1.png",
+      "movieapp2.png",
+      "movieapp3.png",
+      "movieapp4.png",
+    ],
   },
   {
     id: 3,
     title: "Reddit Clone",
-    tehnologies: "Laravel, Vue, Bootstrap",
+    tehnologies: "PHP, Laravel, Vue, Bootstrap",
     github: "",
     description: "",
+    images: [
+      "reddit1.png",
+      "reddit2.png",
+      "reddit3.png",
+      "reddit4.png",
+      "reddit5.png",
+      "reddit6.png",
+      "reddit7.png",
+      "reddit8.png",
+      "reddit9.png",
+    ],
+  },
+  {
+    id: 4,
+    title: "Rent a Car",
+    tehnologies: "PHP, Laravel, Bootstrap",
+    github: "",
+    description: "",
+    images: [
+      "rentacar1.png",
+      "rentacar2.png",
+      "rentacar3.png",
+      "rentacar4.png",
+      "rentacar5.png",
+    ],
   },
 ];
 const desktopProjects = [
   {
     id: 1,
     title: "e-Cafe",
-    tehnologies: "UWP, C#, SQLite",
+    tehnologies: "C#, UWP, SQLite",
     github: "",
     description: "",
     images: [
-      "eCafe_img1.png",
-      "eCafe_img2.png",
-      "eCafe_img3.png",
-      "eCafe_img4.png",
-      "eCafe_img5.png",
-      "eCafe_img6.png",
+      "ecafe1.png",
+      "ecafe2.png",
+      "ecafe3.png",
+      "ecafe4.png",
+      "ecafe5.png",
+      "ecafe6.png",
+    ],
+  },
+  {
+    id: 2,
+    title: "Inventory Management System",
+    tehnologies: "C#, Windows Forms, SQL Server",
+    github: "https://github.com/aleksandar2903/Inventory-Managment-System",
+    description: "",
+    images: [
+      "ims1.png",
+      "ims2.png",
+      "ims3.png",
+      "ims4.png",
+      "ims5.png",
+      "ims6.png",
     ],
   },
 ];
 const mobileProjects = [
   {
-    name: "Visual Studio",
-    level: "90",
+    id: 1,
+    title: "Movie App (TMDB API)",
+    tehnologies: "C#, Xamarin, TMDB API",
+    github: "",
+    description: "",
+    images: [
+      "movie1.png",
+      "movie2.png",
+      "movie3.png",
+      "movie4.png",
+      "movie5.png",
+      "movie6.png",
+    ],
+  },
+  {
+    id: 2,
+    title: "Recipes App (Tasty API)",
+    tehnologies: "C#, Xamarin, Tasty API",
+    github: "",
+    description: "",
+    images: [
+      "recipeapp1.png",
+      "recipeapp2.png",
+      "recipeapp3.png",
+      "recipeapp4.png",
+      "recipeapp5.png",
+      "recipeapp6.png",
+    ],
+  },
+  {
+    id: 3,
+    title: "Smart Shop",
+    tehnologies: "C#, Xamarin, Smart Shop API (Web API - ASP.NET Core)",
+    github: "",
+    description: "",
+    images: [
+      "mss1.png",
+      "mss2.jpg",
+      "mss3.jpg",
+      "mss4.jpg",
+      "mss5.jpg",
+      "mss6.jpg",
+    ],
   },
 ];
 export default {
-  name: "Skills",
+  name: "Projects",
   data() {
     return {
+      images: [],
       projects: [],
+      show: false,
       active: "webProjects",
     };
   },
   mounted() {
-    this.getDesktopProjects();
+    this.getWebProjects();
   },
   methods: {
+    showGallery(index) {
+      this.images = this.projects[index].images;
+      this.show = true;
+    },
     getWebProjects() {
       this.projects = webProjects;
       this.active = "webProjects";
     },
     getDesktopProjects() {
       this.projects = desktopProjects;
+      this.images = this.projects[0].images;
       this.active = "desktopProjects";
     },
     getMobileProjects() {
@@ -137,5 +262,6 @@ export default {
       this.active = "mobileProjects";
     },
   },
+  components: { Gallery },
 };
 </script>

@@ -2,15 +2,11 @@
   <div id="loading-container">
     <img
       class="w-25 mx-auto"
-      :src="require('../assets/img/space.svg')"
+      :src="require('../assets/img/astronaut-header.svg')"
       alt="moon"
     />
-    <div class="rocket w-25 w-xl-25 mx-auto">
-      <img
-        :src="require('../assets/img/rocket.svg')"
-        alt="rocket"
-        width="20%"
-      />
+    <div class="rocket w-25 mx-auto">
+      <img :src="require('../assets/img/rocket.svg')" alt="rocket" />
     </div>
   </div>
 </template>
