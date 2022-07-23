@@ -55,12 +55,15 @@
                   <span>{{ project.tehnologies }}</span>
                   <div class="row gap-4 mt-3">
                     <div>
-                      <button
+                      <a
                         @click="showGallery(index)"
+                        data-bs-toggle="modal"
+                        href="#exampleModalFullscreen"
+                        role="button"
                         class="btn rounded-0 btn-outline-dark"
                       >
                         Show gallery
-                      </button>
+                      </a>
                     </div>
                     <div v-if="project.github">
                       <a
@@ -79,7 +82,7 @@
       </div>
     </div>
   </section>
-  <Gallery v-if="show" @close="show = false" :images="images"></Gallery>
+  <Gallery :images="images"></Gallery>
 </template>
 <script>
 import Gallery from "./Gallery.vue";
@@ -236,7 +239,6 @@ export default {
     return {
       images: [],
       projects: [],
-      show: false,
       active: "webProjects",
     };
   },
@@ -246,7 +248,6 @@ export default {
   methods: {
     showGallery(index) {
       this.images = this.projects[index].images;
-      this.show = true;
     },
     getWebProjects() {
       this.projects = webProjects;

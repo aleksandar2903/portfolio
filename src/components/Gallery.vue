@@ -1,10 +1,10 @@
 <template>
   <div
-    class="modal fade show"
+    class="modal fade"
+    aria-hidden="true"
     id="exampleModalFullscreen"
     tabindex="-1"
     aria-labelledby="exampleModalFullscreenLabel"
-    style="display: block"
     aria-modal="true"
     role="dialog"
   >
@@ -12,20 +12,21 @@
       <div class="modal-content transparent-dark">
         <div class="d-flex justify-content-center h-100 relative">
           <img
+            v-if="image"
             style="object-fit: contain"
             class=""
             :src="require('../assets/img/' + image)"
             alt=""
           />
           <button
-            @click="$emit('close')"
             type="button"
             class="btn p-2 transparent-dark rounded-circle position-absolute top-0 end-0 me-5 mt-2"
+            data-bs-dismiss="modal"
             aria-label="Close"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="gray"
+              fill="#d3d3d3"
               width="30"
               height="30"
               viewBox="0 0 320 512"

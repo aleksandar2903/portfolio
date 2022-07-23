@@ -22,7 +22,6 @@
         </h2></a
       >
       <button
-        @click.prevent="show = !show"
         class="navbar-toggler"
         type="button"
         data-bs-toggle="offcanvas"
@@ -61,7 +60,6 @@
             </h3></a
           >
           <button
-            @click.prevent="show = !show"
             type="button"
             class="btn-close btn-close-white"
             data-bs-dismiss="offcanvas"
@@ -99,8 +97,7 @@
             </li>
           </ul>
           <div
-            :class="show ? 'row' : 'd-flex'"
-            class="ms-xl-4 gap-4 m-0 p-0 align-items-center my-5 my-xl-0"
+            class="d-xl-flex ms-xl-4 gap-4 m-0 p-0 align-items-center my-5 my-xl-0"
           >
             <div class="social-icon justify-content-center d-flex gap-2">
               <a
@@ -116,21 +113,18 @@
                   alt="Github"
               /></a>
             </div>
-            <a
-              href="https://drive.google.com/file/d/19uabLtjiWWdavqD4CoCWeL06gX3SFtyu/view?usp=sharing"
-              target="_blank"
-              class="button-transition text-center fw-bold"
-            >
-              <span>Resume</span>
-            </a>
+            <div class="d-flex">
+              <a
+                href="https://drive.google.com/file/d/19uabLtjiWWdavqD4CoCWeL06gX3SFtyu/view?usp=sharing"
+                target="_blank"
+                class="button-transition mx-auto mt-4 mt-xl-0 text-center fw-bold"
+              >
+                <span>Resume</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <div
-        v-show="show"
-        @click.prevent="show = !show"
-        class="offcanvas-backdrop fade show"
-      ></div>
     </div>
   </nav>
 </template>
@@ -139,8 +133,6 @@
 export default {
   data() {
     return {
-      show: false,
-      active: false,
       isScrolling: false,
       activeLink: "home",
     };
