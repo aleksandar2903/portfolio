@@ -5,9 +5,7 @@
         <div class="col-12">
           <h1 class="title mt-5">Projects</h1>
           <p class="w-75 mx-auto text-center h5 my-4">
-            I love to learn new things and experiment with new technologies.
-            These are some of the major languages, tehnologies, tools and
-            platforms I have worked with:
+            Check out some of my projects.
           </p>
           <div class="row mt-5 px-md-3 gx-0 mx-auto w-75">
             <div class="col-4">
