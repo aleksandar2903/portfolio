@@ -83,7 +83,7 @@
               <a
                 class="h5 navbar-link"
                 :class="activeLink === 'skills' ? 'active ' : 'text-muted'"
-                href="#"
+                href="#skills"
                 >Skills</a
               >
             </li>
@@ -91,7 +91,7 @@
               <a
                 class="h5 navbar-link"
                 :class="activeLink === 'projects' ? 'active' : 'text-muted'"
-                href="#"
+                href="#projects"
                 >Projects</a
               >
             </li>
