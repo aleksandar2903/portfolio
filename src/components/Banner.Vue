@@ -76,7 +76,7 @@ export default {
     tick() {
       let text = ".NET Developer";
       if (this.reverse) {
-        this.text = text.slice(0, this.text.length - 1);
+        this.text = this.text.slice(0, this.text.length - 1);
       } else {
         this.text = text.slice(0, this.text.length + 1);
       }
