@@ -31,11 +31,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
-        :class="show ? 'show' : ''"
         class="offcanvas offcanvas-end text-bg-dark bg-black"
         tabindex="-1"
         id="offcanvasDarkNavbar"
-        :aria-modal="show"
         aria-labelledby="offcanvasDarkNavbarLabel"
         role="dialog"
       >
