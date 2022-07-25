@@ -58,29 +58,31 @@
 
 <script>
 export default {
+  name: "Banner",
   data() {
     return {
       text: "",
+      timer: null,
+      reverse: false,
     };
   },
   mounted() {
-    this.tick(false);
+    //this.tick(false);
+    this.timer = setInterval(() => {
+      this.tick();
+    }, 200);
   },
   methods: {
-    tick(isDeleting) {
-      let text = ".NET Developer ";
-      text.split("").forEach((element, i) =>
-        setTimeout(() => {
-          if (isDeleting) {
-            this.text = this.text.slice(0, text.length - i - 1);
-          } else {
-            this.text += element;
-          }
-          if (i === text.length - 1) {
-            this.tick(!isDeleting);
-          }
-        }, i * 200)
-      );
+    tick() {
+      let text = ".NET Developer";
+      if (this.reverse) {
+        this.text = text.slice(0, this.text.length - 1);
+      } else {
+        this.text = text.slice(0, this.text.length + 1);
+      }
+      if (this.text.length === text.length || this.text.length === 0) {
+        this.reverse = !this.reverse;
+      }
     },
   },
 };

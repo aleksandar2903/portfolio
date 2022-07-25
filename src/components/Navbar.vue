@@ -31,11 +31,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
-        :class="show ? 'show' : ''"
         class="offcanvas offcanvas-end text-bg-dark bg-black"
         tabindex="-1"
         id="offcanvasDarkNavbar"
-        :aria-modal="show"
         aria-labelledby="offcanvasDarkNavbarLabel"
         role="dialog"
       >
@@ -83,7 +81,7 @@
               <a
                 class="h5 navbar-link"
                 :class="activeLink === 'skills' ? 'active ' : 'text-muted'"
-                href="#"
+                href="#skills"
                 >Skills</a
               >
             </li>
@@ -91,7 +89,7 @@
               <a
                 class="h5 navbar-link"
                 :class="activeLink === 'projects' ? 'active' : 'text-muted'"
-                href="#"
+                href="#projects"
                 >Projects</a
               >
             </li>
